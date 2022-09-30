@@ -1,22 +1,25 @@
 import axios from 'axios'
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 const Menu = ({cat}) => {
   const [posts,setPosts] = React.useState([])
   const navigate = useNavigate()
+  const {id} = useParams()
 
   React.useEffect(() => {
     const fetch = async() => {
       try{
         const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts/?cat=${cat}`)
+        
         setPosts(res.data)
+        
       }catch(err){
         console.log(err)
       }
     }
     fetch()
-  }, [cat])
+  }, [cat, id, posts])
  
   return (
     <div className="menu">
