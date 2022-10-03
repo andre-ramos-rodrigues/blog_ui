@@ -11,7 +11,7 @@ export const AuthContextProvider = ({children}) => {
     setCurrentUser(res.data)
   }
   const logout = async() => {
-    await axios.post("https://afpoc-blog.herokuapp.com/api/auth/logout")
+    await axios.post("https://afpoc-blog.herokuapp.com/api/auth/logout", {withCredentials:true})
     setCurrentUser(null)
   }
   React.useEffect(() => {

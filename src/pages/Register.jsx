@@ -28,7 +28,7 @@ const Register = () => {
   const handleSubmit = async(e) => {
     e.preventDefault()
     try{
-      await axios.post("https://afpoc-blog.herokuapp.com/api/auth/register", inputs)
+      await axios.post("https://afpoc-blog.herokuapp.com/api/auth/register", inputs, {withCredentials:true})
       navigate("/login")
     }catch(err){
       console.log(err)
