@@ -27,7 +27,7 @@ const Single = () => {
 
   const handleDelete = async() => {
     try{
-      await axios.delete(`https://afpoc-blog.herokuapp.com/api/posts/${id}`, {withCredentials: true})
+      await axios.delete(`https://afpoc-blog.herokuapp.com/api/posts/${id}`, {token: localStorage.getItem("token")}, {withCredentials: true})
       navigate("/")
     }catch(err){
       console.log(err)
