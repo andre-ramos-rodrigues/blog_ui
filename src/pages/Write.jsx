@@ -41,12 +41,12 @@ const Write = () => {
    try{
     state? // if state, its upload a post
     (await axios.put(`https://afpoc-blog.herokuapp.com/api/posts/${state.id}`, {
-      title: title, desc: value, img: cloudImg, cat: cat, postId: state.idposts, token: localStorage.getItem("access_token")
+      title: title, desc: value, img: cloudImg, cat: cat, postId: state.idposts, token: localStorage.getItem("user")
     }, {withCredentials: true})) 
     : // if dont, its create a new post
     (await axios.post("https://afpoc-blog.herokuapp.com/api/posts", {
       title: title, desc: value, img: cloudImg, cat: cat,
-      date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"), token: localStorage.getItem("access_token")
+      date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"), token: localStorage.getItem("user")
     }, {withCredentials: true}))
 
     navigate("/")
