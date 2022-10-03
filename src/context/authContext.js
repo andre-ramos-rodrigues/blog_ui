@@ -8,7 +8,8 @@ export const AuthContextProvider = ({children}) => {
 
   const login = async(inputs) => {
     const res = await axios.post("https://afpoc-blog.herokuapp.com/api/auth/login", inputs, {withCredentials: true})
-    setCurrentUser(res.data)
+    setCurrentUser(res.data.content)
+    localStorage.setItem("token", res.data.token)
   }
   const logout = async() => {
     await axios.post("https://afpoc-blog.herokuapp.com/api/auth/logout", {withCredentials:true})
