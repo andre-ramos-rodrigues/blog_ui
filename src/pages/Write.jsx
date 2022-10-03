@@ -32,7 +32,7 @@ const Write = () => {
 
     const cloudinaryResponse = await axios.post(`https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload`, formData, {
      headers: { "Content-Type": "multipart/form-data"}
-  })
+  }, {withCredentials: false})
     const storedImg = cloudinaryResponse.data
     console.log(storedImg)
     const cloudImg = storedImg.public_id
