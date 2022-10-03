@@ -19,7 +19,7 @@ const Menu = ({cat}) => {
       }
     }
     fetch()
-  }, [cat, id, posts])
+  }, [cat, id])
  
   return (
     <div className="menu">
