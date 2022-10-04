@@ -27,8 +27,9 @@ const Single = () => {
     fetch()
   }, [id])
 
-  const handleDelete = async() => {
+  const handleDelete = async(username) => {
     try{
+      if(username !== currentUser.username) return
       await instance.delete(`https://afpoc-blog.herokuapp.com/api/posts/${id}`, {withCredentials: true})
       navigate("/")
     }catch(err){
@@ -58,7 +59,7 @@ const Single = () => {
             <Link to={`/write?edit=${id}`} state={post}>
             <img src={Edit} alt="" />
             </Link>
-            <img src={Delete} alt="" onClick={handleDelete}/>
+            <img src={Delete} alt="" onClick={() => {handleDelete(post?.username)}}/>
             </div>
           )}
         </div>
