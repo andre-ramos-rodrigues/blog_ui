@@ -6,12 +6,11 @@ const Home = () => {
   const [posts,setPosts] = React.useState([])
   const navigate = useNavigate()
   const cat = useLocation().search
-  axios.defaults.withCredentials = true
 
   React.useEffect(() => {
     const fetch = async() => {
       try{
-        const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts${cat}`)
+        const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts${cat}`, {withCredentials:true})
         setPosts(res.data)
       }catch(err){
         console.log(err)
