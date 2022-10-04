@@ -4,6 +4,7 @@ import Edit from "../img/edit.png"
 import Delete from "../img/delete.png"
 import Menu from '../components/Menu'
 import axios from 'axios'
+import instance from '../utils/axiosConfig'
 import moment from "moment"
 import {AuthContext} from "../context/authContext"
 
@@ -17,7 +18,7 @@ const Single = () => {
   React.useEffect(() => {
     const fetch = async() => {
       try{
-        const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts/${id}`)
+        const res = await instance.get(`https://afpoc-blog.herokuapp.com/api/posts/${id}`)
         setPost(res.data)
       }catch(err){
         console.log(err)
@@ -28,7 +29,7 @@ const Single = () => {
 
   const handleDelete = async() => {
     try{
-      await axios.delete(`https://afpoc-blog.herokuapp.com/api/posts/${id}`, {withCredentials: true})
+      await instance.delete(`https://afpoc-blog.herokuapp.com/api/posts/${id}`, {withCredentials: true})
       navigate("/")
     }catch(err){
       console.log(err)
