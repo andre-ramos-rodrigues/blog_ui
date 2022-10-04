@@ -28,7 +28,7 @@ const Single = () => {
 
   const handleDelete = async() => {
     try{
-      await axios.delete(`https://afpoc-blog.herokuapp.com/api/posts/${id}`, token, {withCredentials: true})
+      await axios.delete(`https://afpoc-blog.herokuapp.com/api/posts/${id}`, {withCredentials: true})
       navigate("/")
     }catch(err){
       console.log(err)
@@ -62,7 +62,6 @@ const Single = () => {
           )}
         </div>
         <h1>{post?.title}</h1>
-        {token && token}
         {getText(post?.desc)}
       </div>
       <div className="menu"><Menu cat={post?.cat}/></div>
