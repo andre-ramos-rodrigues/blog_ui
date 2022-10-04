@@ -1,10 +1,5 @@
 import axios from 'axios';
 
-const url = "https://brilliant-palmier-9298e8.netlify.app"
+const instance = axios.create()
 
-const app = axios.create({
-    url,
-    withCredentials: true
-})
-
-export default app;
+export default instance

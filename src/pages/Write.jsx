@@ -2,6 +2,7 @@ import React from 'react'
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 import axios from "axios"
+import instance from '../utils/axiosConfig'
 import { Upload } from '../cloudinary/Upload'
 import {AuthContext} from "../context/authContext"
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
@@ -30,8 +31,8 @@ const Write = () => {
     formData.append("api_key", "989846142342293")
     formData.append("upload_preset", "afpoc123")
 
-    const cloudinaryResponse = await axios.post(`https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload`, formData, {
-     headers: { "Content-Type": "multipart/form-data", "Access-Control-Allow-Origin":true}
+    const cloudinaryResponse = await instance.post(`https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload`, formData, {
+     headers: { "Content-Type": "multipart/form-data"}
   })
 
     const storedImg = cloudinaryResponse.data
