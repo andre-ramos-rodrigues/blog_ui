@@ -42,11 +42,11 @@ const Write = () => {
     // posting it with axios using the cloudinary response to save the image url on mySQL
    try{
     state? // if state, its upload a post
-    (await axios.put(`https://afpoc-blog.herokuapp.com/api/posts/${state.id}`, {
+    (await instance.put(`https://afpoc-blog.herokuapp.com/api/posts/${state.id}`, {
       title: title, desc: value, img: cloudImg, cat: cat, postId: state.idposts, token: localStorage.getItem("token")
     }, {withCredentials: true})) 
     : // if dont, its create a new post
-    (await axios.post("https://afpoc-blog.herokuapp.com/api/posts", {
+    (await instance.post("https://afpoc-blog.herokuapp.com/api/posts", {
       title: title, desc: value, img: cloudImg, cat: cat,
       date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"), token: localStorage.getItem("token")
     }, {withCredentials: true}))
