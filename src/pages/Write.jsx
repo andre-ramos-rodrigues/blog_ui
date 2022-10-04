@@ -31,7 +31,7 @@ const Write = () => {
     formData.append("upload_preset", "afpoc123")
 
     const cloudinaryResponse = await axios.post(`https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload`, formData, {
-     headers: { "Content-Type": "multipart/form-data", "Access-Control-Allow-Credentials": true, "Access-Control-Allow-Origin": "https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload"},
+     headers: { "Content-Type": "multipart/form-data"},
   }, {withCredentials: true})
 
     const storedImg = cloudinaryResponse.data
