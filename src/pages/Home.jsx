@@ -11,7 +11,7 @@ const Home = () => {
   React.useEffect(() => {
     const fetch = async() => {
       try{
-        const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts${cat}`, {withCredentials:true})
+        const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts${cat}`)
         setPosts(res.data)
       }catch(err){
         console.log(err)
