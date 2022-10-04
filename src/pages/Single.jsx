@@ -18,7 +18,7 @@ const Single = () => {
   React.useEffect(() => {
     const fetch = async() => {
       try{
-        const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts/${id}`)
+        const res = await instance.get(`https://afpoc-blog.herokuapp.com/api/posts/${id}`)
         setPost(res.data)
       }catch(err){
         console.log(err)

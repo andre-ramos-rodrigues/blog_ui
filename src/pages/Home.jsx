@@ -1,17 +1,17 @@
 import React from 'react'
 import {Link, useNavigate, useLocation} from "react-router-dom"
 import axios from "axios"
-import instance from '../utils/axiosConfig'
 
 const Home = () => {
   const [posts,setPosts] = React.useState([])
   const navigate = useNavigate()
   const cat = useLocation().search
+  axios.defaults.withCredentials = true
 
   React.useEffect(() => {
     const fetch = async() => {
       try{
-        const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts${cat}`)
+        const res = await axios.get(`https://afpoc-blog.herokuapp.com/api/posts${cat}`, {withCredentials:true})
         setPosts(res.data)
       }catch(err){
         console.log(err)
