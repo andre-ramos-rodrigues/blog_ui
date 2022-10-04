@@ -7,12 +7,12 @@ export const AuthContextProvider = ({children}) => {
   const [currentUser,setCurrentUser] = React.useState(JSON.parse(localStorage.getItem("user")) || null)
 
   const login = async(inputs) => {
-    const res = await axios.post("https://afpoc-blog.herokuapp.com/api/auth/login", inputs, {withCredentials: true})
+    const res = await axios.post("https://afpoc-blog.herokuapp.com/api/auth/login", inputs)
     setCurrentUser(res.data.content)
     localStorage.setItem("token", res.data.token)
   }
   const logout = async() => {
-    await axios.post("https://afpoc-blog.herokuapp.com/api/auth/logout", {withCredentials:true})
+    await axios.post("https://afpoc-blog.herokuapp.com/api/auth/logout")
     setCurrentUser(null)
   }
   React.useEffect(() => {
